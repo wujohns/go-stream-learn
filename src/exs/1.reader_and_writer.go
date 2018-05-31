@@ -1,6 +1,7 @@
 package exs
 
 import (
+	"fmt"
 	"io"
 	"math/rand"
 	"os"
@@ -39,10 +40,30 @@ func (r *BlankReader) Read(p []byte) (n int, err error) {
 	return n, nil
 }
 
+// BlankWriter 自定义的 writer
+type BlankWriter struct{}
+
+// 对 Writer 接口中的 Write 方法的实现
+func (w BlankWriter) Write(p []byte) (int, error) {
+	n := len(p)
+	fmt.Println(string(p))
+	return n, nil
+}
+
 // WriteToFileTest 构建一个 blankReader，并将数据写入一个文件中
 func WriteToFileTest() {
 	r := &BlankReader{100, 0}
 	w, _ := os.Create("files/form_blank_reader.txt")
+
+	buf := make([]byte, 10)
+	io.CopyBuffer(w, r, buf)
+}
+
+// WriteToBlankWriter 构建 blankReader 与 blankWriter，并将 reader 的数据导入到 writer
+func WriteToBlankWriter() {
+	r := &BlankReader{100, 0}
+	w := BlankWriter{}
+
 	buf := make([]byte, 10)
 	io.CopyBuffer(w, r, buf)
 }

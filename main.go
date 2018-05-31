@@ -4,4 +4,5 @@ import "exs"
 
 func main() {
 	exs.WriteToFileTest()
+	exs.WriteToBlankWriter()
 }
