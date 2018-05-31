@@ -8,6 +8,13 @@ import (
 	"time"
 )
 
+/**
+ * 自定义 reader 与 writer 的实现与使用
+ *
+ * @author wujohns
+ * @date 18/5/31
+ */
+
 // BlankReader 自定义 reader
 type BlankReader struct {
 	count  int // 总量

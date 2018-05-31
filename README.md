@@ -7,6 +7,8 @@ go的流式处理笔记
 备注：由于目前的主力语言是 nodejs，所以在相关的说明中会与 nodejs 的 stream 做类比（即如果对 nodejs 的 stream 有一定了解的话，这里的阅读会轻松很多）。
 
 ## 章节
-(1) [go中的reader与writer](/docs/1.reader与writer.md)  
-(2) [go中的io.Pipe](/docs/2.pipe.md)
-(3) [pipeline结构的实现](/docs/3.pipeline.md)
+(1) [go中的reader与writer](/docs/1.reader与writer.md)   
+(2) [go中的io.Pipe](/docs/2.pipe.md)  
+
+[plus go中的异步处理](/docs/plus.async.md)  
+[plus go中io.Pipe源码解析](/docs/plus.pipe_detail.md)

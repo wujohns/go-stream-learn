@@ -3,6 +3,10 @@ package main
 import "exs"
 
 func main() {
-	exs.WriteToFileTest()
-	exs.WriteToBlankWriter()
+	// reader 与 writer 的实验
+	// exs.WriteToFileTest()
+	// exs.WriteToBlankWriter()
+
+	// pipe 的实验
+	exs.PipeTest()
 }
