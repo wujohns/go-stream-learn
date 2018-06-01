@@ -44,6 +44,7 @@ func PipeTest() {
 	srcReader := &BlankReader{30, 0}
 	distWriter := BlankWriter{}
 
+	// 将 OpA 放在 goroutine 中的原因是如果直接执行，会使得 writerStream 被写满而阻塞
 	go func() {
 		defer writeStream.Close()
 		OpA(srcReader, writeStream)
