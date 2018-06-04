@@ -11,7 +11,7 @@ go的流式处理笔记
 (2) [go中的io.Pipe](/docs/2.pipe.md)  
 
 [plus go中的异步处理](/docs/plus.async.md)  
-[plus go中的sync包的使用](/docs/plus.sync.md)
+[plus go中的sync包的使用](/docs/plus.sync.md)  
 [plus go中io.Pipe源码解析](/docs/plus.pipe_detail.md)
 
 ## 参考
