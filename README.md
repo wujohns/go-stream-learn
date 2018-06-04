@@ -14,5 +14,5 @@ go的流式处理笔记
 [plus go中的sync包的使用](/docs/plus.sync.md)  
 [plus go中io.Pipe源码解析](/docs/plus.pipe_detail.md)
 
-## 参考
-[go笔记](https://liushuchun.gitbooks.io/golang/content/)
+## 其他参考（非本仓库作者笔记）
+[liushuchun的go笔记](https://liushuchun.gitbooks.io/golang/content/)
