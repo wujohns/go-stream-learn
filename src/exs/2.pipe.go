@@ -1,6 +1,8 @@
 package exs
 
-import "io"
+import (
+	"io"
+)
 
 /**
  * go 中的 pipe 的应用

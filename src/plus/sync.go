@@ -17,9 +17,9 @@ import (
 func WithOutMutex() {
 	num := 0
 	for i := 0; i < 200; i++ {
-		go func(idx int) {
+		go func() {
 			num++
-		}(i)
+		}()
 	}
 	time.Sleep(time.Second)
 	fmt.Printf("num=%d\n", num)
@@ -30,11 +30,11 @@ func WithMutex() {
 	var lock sync.Mutex
 	num := 0
 	for i := 0; i < 2000; i++ {
-		go func(idx int) {
+		go func() {
 			lock.Lock()
 			num++
 			lock.Unlock()
-		}(i)
+		}()
 	}
 	time.Sleep(time.Second)
 	fmt.Printf("num=%d\n", num)

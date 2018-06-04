@@ -1,7 +1,5 @@
 package main
 
-import "plus"
-
 func main() {
 	// reader 与 writer 的实验
 	// exs.WriteToFileTest()
@@ -19,5 +17,8 @@ func main() {
 	// sync 包的实验
 	// plus.WithOutMutex()
 	// plus.WithMutex()
-	plus.OnlyOnce()
+	// plus.OnlyOnce()
+
+	// pipe_detail 实验
+	// plus.CusPipeTest()
 }

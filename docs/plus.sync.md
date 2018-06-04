@@ -31,11 +31,11 @@ func WithMutex() {
 	var lock sync.Mutex
 	num := 0
 	for i := 0; i < 200; i++ {
-		go func(idx int) {
+		go func() {
 			lock.Lock()
 			num++
 			lock.Unlock()
-		}(i)
+		}()
 	}
 	time.Sleep(time.Second)
 	fmt.Printf("num=%d\n", num)
@@ -65,9 +65,22 @@ func OnlyOnce() {
 这里使用 sync.Once 保证并发中的打印操作只执行了一次（sync.Once 是基于 sync.Mutex 封装的，使用了互斥锁的机制保证其只执行一次）
 
 ## sync/atomic 中的 atomic.Value
-在处理并发的安全性上除了采用 `sharding memory + lock` 的方式（锁的部分即上述的 sync.Mutex 以及未提及的 sync.RWMutex）,另外一种方式就是使用 atomic.Value
+在处理并发读写的安全性上除了采用 `lock` 的方式（锁的部分即上述的 sync.Mutex 以及未提及的 sync.RWMutex）,另外一种方式就是使用 atomic.Value
 
-// TODO 案例需要补充
+atomic.Value 的策略是将读操作与写操作视为原子操作，避免在并发时同时对同一片数据进行操作而造成冲突，相比于自定义锁，atomic.Value 方便的地方在于它都封装好了。
+
+主要方法为 Load 与 Save，在 io.Pipe 中对 err 的处理上有应用，主要是为了保证对 err 对象读写的安全性。
+
+这里仅简单列出其接口的使用，具体用法可以参考 `详细参考` 中的 `go atomic.Value相关`
+
+```go
+var v atomic.Value
+var value <Type>	// 需要存储的值，Type 为该值的类型
+
+v.Store(value)		// 存储变量
+v.Load().(<Type>)	// 加载变量，Type 为该值的类型
+```
 
 ## 详细参考
 [go sync包相关使用](https://deepzz.com/post/golang-sync-package-usage.html)
+[go atomic.Value相关](https://my.oschina.net/u/222608/blog/881263)
