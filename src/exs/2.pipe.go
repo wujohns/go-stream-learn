@@ -53,3 +53,22 @@ func PipeTest() {
 	}()
 	OpB(readStream, distWriter)
 }
+
+// StdOpA 对 OpA 的封装
+func StdOpA(r io.Reader) io.Reader {
+	readStream, writeStream := io.Pipe()
+	go func() {
+		defer writeStream.Close()
+		OpA(r, writeStream)
+	}()
+	return readStream
+}
+
+// StdPipeTest 标准化尝试
+func StdPipeTest() {
+	srcReader := &BlankReader{30, 0}
+	distWriter := BlankWriter{}
+
+	r := StdOpA(srcReader)
+	OpB(r, distWriter)
+}

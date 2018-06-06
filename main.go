@@ -1,5 +1,7 @@
 package main
 
+import "exs"
+
 func main() {
 	// reader 与 writer 的实验
 	// exs.WriteToFileTest()
@@ -7,6 +9,7 @@ func main() {
 
 	// pipe 的实验
 	// exs.PipeTest()
+	exs.StdPipeTest()
 
 	// async 的实验
 	// plus.AsyncOp1()
